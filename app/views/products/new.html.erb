@@ -1,0 +1,25 @@
+<div class="w-80 m-auto mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">New Product</h1>
+            <hr>
+            <%= form_with model: @product do |form|%>
+                <div>
+                    <%= form.label :name, class:"form-label" %><br>
+                    <%= form.text_field :name, class:"form-control" %>
+                </div>
+                <div>
+                    <%= form.label :price, class:"form-label" %><br>
+                    <%= form.text_field :price, class:"form-control" %>
+                </div>
+                <div>
+                    <%= form.label :amount, class:"form-label" %><br>
+                    <%= form.text_field :amount, class:"form-control" %>
+                </div>
+                <div class="mt-3 d-flex justify-content-end">
+                    <%= form.submit "Save", class:"btn btn-primary" %>
+                </div>
+            <%end%>
+        </div>
+    </div>
+</div>

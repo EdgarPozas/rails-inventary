@@ -1,0 +1,17 @@
+<div class="w-80 m-auto mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Stores</h1>
+        </div>
+    </div>
+    <div class="d-flex mt-3">
+        <% @stores.each do |store| %>
+            <div class="card w-30 me-2">
+                <div class="card-body">
+                    <h3 class="card-title"><%=store.name%></h3>
+                    <h5 class="card-text"><%=store.RFC%></h5>
+                </div>
+            </div>
+        <%end%>
+    </div>
+</div>

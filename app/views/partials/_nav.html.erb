@@ -1,0 +1,66 @@
+<% 
+    @options=[
+        {
+            name:"Home",
+            url:"/"
+        },
+        {
+            name:"Stores",
+            url:"/stores",
+            options:[
+                {
+                    name:"New",
+                    url:"/stores/new"
+                }
+            ]
+        },
+        {
+            name:"Products",
+            url:"/products",
+            options:[
+                {
+                    name:"New",
+                    url:"/products/new"
+                }
+            ]
+        }
+    ]
+%>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Navigation Bar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <% @options.each do |option| %>
+                    <% if option.keys.include? :options %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="<%=option[:url]%>" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <%=option[:name]%>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <% option[:options].each do |subOption|%>
+                                    <li><a class="dropdown-item" href="<%=subOption[:url]%>"><%=subOption[:name]%></a></li>
+                                <% end %>
+                            </ul>
+                        </li>
+                    <%else%>
+                        <li class="nav-item">
+                            <%= link_to option[:name],option[:url],class:"nav-link active" %>
+                        </li>
+                    <%end%>
+                <%end%>
+            </ul>
+            <div>
+                <a href="/users/new">
+                    <button class="btn btn-light" type="submit">Register</button>
+                </a>
+                <a href="/sessions/login">
+                    <button class="btn btn-outline-light ms-2" type="submit">Login</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
